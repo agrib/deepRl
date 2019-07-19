@@ -1,0 +1,26 @@
+###############script for plotting two graphs####################
+
+import pandas as pd
+import plotly.plotly as py
+import plotly.graph_objs as go
+df1 = pd.read_csv('./exp10/her1/progress.csv')
+df2= pd.read_csv('./exp10/her2/progress.csv')
+trace1 = go.Scatter(name='arm1',x= df1['epoch'], y=df1['train/success_rate'])
+trace2 = go.Scatter(name='arm2', x= df2['epoch'], y=df2['train/success_rate'])
+fig= go.Figure(data=[trace1,trace2], layout=go.Layout(xaxis=dict(title='epochs'),yaxis=dict(title='train_success_rate')))
+py.plot(fig)
+
+
+###test
+trace1 = go.Scatter(name='arm1',x= df1['epoch'], y=df1['test/success_rate'])
+trace2 = go.Scatter(name='arm2', x= df2['epoch'], y=df2['test/success_rate'])
+fig= go.Figure(data=[trace1,trace2], layout=go.Layout(xaxis=dict(title='epochs'),yaxis=dict(title='test_success_rate')))
+py.plot(fig)
+
+
+trace1 = go.Scatter(name='arm1',x= df1['epoch'], y=df1['test/mean_Q'])
+trace2 = go.Scatter(name='arm2', x= df2['epoch'], y=df2['test/mean_Q'])
+fig= go.Figure(data=[trace1,trace2], layout=go.Layout(xaxis=dict(title='epochs'),yaxis=dict(title='test/mean_Q')))
+py.plot(fig)
+
+
