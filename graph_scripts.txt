@@ -1,0 +1,5 @@
+import gym
+import gym_dobot
+env = gym.make('DobotHRLPush-v1')
+obs = env.reset()
+env.render()
